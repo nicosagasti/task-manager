@@ -2,6 +2,7 @@ import { pgTable, text, date, boolean, jsonb } from "drizzle-orm/pg-core";
 
 export const tasks = pgTable("tasks", {
   id: text("id").primaryKey(), // Unique identifier for each task
+  userId: text("userId").notNull(),
   name: text("name").notNull(), // Name of the task
   deadline: date("deadline").notNull(), // Task deadline
   status: text("status").notNull(), // Status: "completed", "in_progress", or "not_started"

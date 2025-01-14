@@ -1,10 +1,12 @@
 import { Hono } from "hono";
+
 import { db } from "@/database/drizzle";
 import { tasks } from "@/database/schema";
 
 import { clerkMiddleware, getAuth } from "@hono/clerk-auth";
-
 import { HTTPException } from "hono/http-exception";
+
+import { eq } from "drizzle-orm";
 
 const app = new Hono().get("/", clerkMiddleware(), async (c) => {
   const auth = getAuth(c);
@@ -23,7 +25,8 @@ const app = new Hono().get("/", clerkMiddleware(), async (c) => {
       status: tasks.status,
       impact: tasks.impact,
     })
-    .from(tasks);
+    .from(tasks)
+    .where(eq(tasks.userId, auth.userId));
 
   return c.json({ data });
 });

@@ -5,15 +5,8 @@
     {
       "idx": 0,
       "version": "5",
-      "when": 1736549325435,
-      "tag": "0000_clumsy_brood",
-      "breakpoints": true
-    },
-    {
-      "idx": 1,
-      "version": "5",
-      "when": 1736811600131,
-      "tag": "0001_secret_blink",
+      "when": 1736896285481,
+      "tag": "0000_perfect_rhino",
       "breakpoints": true
     }
   ]

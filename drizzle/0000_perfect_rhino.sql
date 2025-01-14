@@ -1,5 +1,6 @@
 CREATE TABLE IF NOT EXISTS "tasks" (
 	"id" text PRIMARY KEY NOT NULL,
+	"userId" text NOT NULL,
 	"name" text NOT NULL,
 	"deadline" date NOT NULL,
 	"status" text NOT NULL,
@@ -9,5 +10,3 @@ CREATE TABLE IF NOT EXISTS "tasks" (
 	"dependencies" jsonb,
 	"description" text
 );
---> statement-breakpoint
-DROP TABLE "accounts";
