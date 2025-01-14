@@ -13,5 +13,6 @@ export const tasks = pgTable("tasks", {
 });
 
 /* TODO:
-/* Fix tags and dependecies to be arrays of strings (?)
-*/
+ * Fix tags and dependecies to be arrays of strings (?)
+ * Add createdAt
+ */
