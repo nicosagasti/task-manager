@@ -1,4 +1,10 @@
+/* TODO:
+ * Fix tags and dependecies to be arrays of strings (?)
+ * Add createdAt
+ */
+
 import { pgTable, text, date, boolean, jsonb } from "drizzle-orm/pg-core";
+import { createInsertSchema } from "drizzle-zod";
 
 export const tasks = pgTable("tasks", {
   id: text("id").primaryKey(), // Unique identifier for each task
@@ -13,7 +19,5 @@ export const tasks = pgTable("tasks", {
   description: text("description"), // Additional task details or notes
 });
 
-/* TODO:
- * Fix tags and dependecies to be arrays of strings (?)
- * Add createdAt
- */
+export const insertTaskSchema = createInsertSchema(tasks);
+

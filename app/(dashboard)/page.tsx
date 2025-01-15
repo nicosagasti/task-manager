@@ -1,6 +1,5 @@
 // import { UserButton } from "@clerk/nextjs";
 
-"use client";
 
 // import { useGetTasks } from "@/features/tasks/api/use-get-tasks";
 
@@ -26,10 +25,21 @@
 //     </div>
 //   );
 // }
+
+"use client";
+
+import { Button } from "@/components/ui/button";
+
+import { useNewTask } from "@/features/tasks/hooks/use-new-taks";
+
 export default function Home() {
+  const { onOpen } = useNewTask();
   return (
     <div>
-      Home Page
+      <Button onClick={onOpen}>
+        Add a task
+
+      </Button>
     </div>
   );
 }
