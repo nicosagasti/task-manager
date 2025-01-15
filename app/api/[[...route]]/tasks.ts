@@ -31,22 +31,19 @@ const app = new Hono()
         impact: tasks.impact,
       })
       .from(tasks)
-      .where(eq(tasks.userId, auth.userId))
+      .where(eq(tasks.userId, auth.userId));
 
     return c.json({ data });
   })
   .post(
     "/",
     clerkMiddleware(),
-    zValidator("json", insertTaskSchema),
-
-    // zValidator(
-    //   "json",
-    //   insertTaskSchema.pick({
-    //     name: true,
-    //   })
-    // ),
-    
+    zValidator(
+      "json",
+      insertTaskSchema.pick({
+        name: true,
+      })
+    ),
     async (c) => {
       const auth = getAuth(c);
       const values = c.req.valid("json");
@@ -61,6 +58,10 @@ const app = new Hono()
           ...values,
           id: createId(),
           userId: auth.userId,
+          deadline: new Date().toISOString(), // Example value
+          status: "pending", // Example value
+          impact: "low", // Example value
+          automate: false,
         })
         .returning();
 
